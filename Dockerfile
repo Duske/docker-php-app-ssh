@@ -1,5 +1,5 @@
 FROM million12/nginx-php:latest
-MAINTAINER Marcin Ryzycki marcin@m12.io
+MAINTAINER Dustin Chabrowski dc@itao.de
 
 # - Install OpenSSH server
 # - Generate required host keys
