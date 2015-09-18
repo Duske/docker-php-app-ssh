@@ -16,6 +16,13 @@ SSH keys are added from GitHub via GitHub API. The only thing you need to do is 
 After container is launched, you can login:  
 `ssh -p 1122 www@docker-host`
 
+### Publick key example
+```
+docker build -t <vendor/name> .
+docker run -d -p 1122:22 --name="<name of ssh container>" --volumes-from="<container with web files>" --env=
+"SSH_PUB_KEY=<content of ~/.ssh/id_rsa.pub>" <vendor/name>
+```
+
 ##### Fig example:  
 ```
 dev:
