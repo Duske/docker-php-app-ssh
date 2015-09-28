@@ -16,7 +16,7 @@ SSH keys are added from GitHub via GitHub API. The only thing you need to do is 
 After container is launched, you can login:  
 `ssh -p 1122 www@docker-host`
 
-### Publick key example
+### Public key example
 ```
 docker build -t <vendor/name> .
 docker run -d -p 1122:22 --name="<name of ssh container>" --volumes-from="<container with web files>" --env=
@@ -34,6 +34,9 @@ dev:
   environment:
     IMPORT_GITHUB_PUB_KEYS: user1,user2,user3
 ```
+## TODO
+* ZSH/oh-my-zsh default shell
+* helpful neos aliases in bash_profile
 
 ## Author
 
