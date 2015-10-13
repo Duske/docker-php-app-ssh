@@ -8,7 +8,7 @@ MAINTAINER Dustin Chabrowski dc@itao.de
 # - Remove non-necessary Supervisord services from parent image 'million12/nginx-php'
 # - Remove warning about missing locale while logging in via ssh
 RUN \
-  yum install -y openssh-server pwgen sudo hostname vim mc links && \
+  yum install -y openssh-server pwgen sudo hostname vim mc links zsh && \
   yum clean all && \
 
   ssh-keygen -q -b 1024 -N '' -t rsa -f /etc/ssh/ssh_host_rsa_key && \
@@ -27,6 +27,7 @@ RUN \
   rm -rf /config/init/10-nginx-data-dirs.sh /etc/supervisor.d/nginx.conf /etc/supervisor.d/php-fpm.conf && \
   echo > /etc/sysconfig/i18n
 
+RUN command -v zsh | tee -a /etc/shells && chsh -s "$(command -v zsh)" "www"
 # Add config/init scripts to run after container has been started
 ADD container-files /
 
