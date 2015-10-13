@@ -10,6 +10,7 @@ echo "www:$PASS" | chpasswd
 # Make sure 'www' home directory exists...
 mkdir -p /data/www && chown www /data/www
 
+# Github Key
 if [ -z "${IMPORT_GITHUB_PUB_KEYS+xxx}" ] || [ -z "${IMPORT_GITHUB_PUB_KEYS}" ]; then
   echo "WARNING: env variable \$IMPORT_GITHUB_PUB_KEYS is not set. Please set it to have access to this container via SSH."
 else
@@ -21,8 +22,13 @@ else
   done
 fi
 
+# Public Key
 if [ -z "${SSH_PUB_KEY+xxx}" ] || [ -z "${SSH_PUB_KEY}" ]; then
   echo "WARNING: env variable \$SSH_PUB_KEY is not set. Please set it to have access to this container via SSH."
 else
   su www -c "/ssh-key.sh \"${SSH_PUB_KEY}\""
 fi
+
+# ZSH Shell
+export TERM=linux
+su www -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
